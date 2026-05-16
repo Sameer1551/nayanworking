@@ -34,3 +34,12 @@
 @REM set title of command window
 title %0
 @REM enable echoing by setting MAVEN_BATCH_ECHO to 'on'
+@if "%MAVEN_BATCH_ECHO%"=="on" echo %MAVEN_BATCH_ECHO%
+
+@setlocal
+
+IF "%MAVEN_DEBUG_ADDRESS%"=="" @set MAVEN_DEBUG_ADDRESS=8000
+
+@set MAVEN_DEBUG_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=%MAVEN_DEBUG_ADDRESS%
+
+@call "%~dp0"mvn.cmd %*
