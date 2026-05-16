@@ -17,7 +17,7 @@
 		<java.version>17</java.version>
 		<!-- Override byte-buddy to support Java 26 -->
 		<byte-buddy.version>1.15.11</byte-buddy.version>
-		<mockito.version>5.15.2</mockito.version>
+		<mockito.version>5.23.0</mockito.version>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Starters -->
