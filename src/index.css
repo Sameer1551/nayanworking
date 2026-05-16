@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Fix for cross-browser layout shifting and centering - ensuring .container is always centered */
+.container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Slide-down animation for admin secondary password field */
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 100px;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out forwards;
+}
+
+/* Print styles for billing page */
+@media print {
+  /* Hide action buttons when printing */
+  .print\\:hidden {
+    display: none !important;
+  }
+  
+  /* Ensure proper page breaks */
+  .print\\:break-before-page {
+    break-before: page;
+  }
+  
+  /* Remove shadows and borders for cleaner print */
+  .print\\:no-shadow {
+    box-shadow: none !important;
+  }
+  
+  /* Ensure text is readable */
+  .print\\:text-black {
+    color: black !important;
+  }
+  
+  /* Force background colors to print */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  
+  /* Remove background colors from buttons and other elements */
+  button, .bg-gradient-to-r {
+    background: none !important;
+    color: black !important;
+  }
+}

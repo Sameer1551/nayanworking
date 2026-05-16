@@ -1,0 +1,43 @@
+{
+  "database": {
+    "mysql": {
+      "serviceNames": ["MySQL80", "MySQL", "mysql80", "mysql"],
+      "credentials": {
+        "username": "root",
+        "password": "root"
+      },
+      "port": 3306,
+      "waitTime": 5000,
+      "maxRetries": 10
+    }
+  },
+  "backend": {
+    "springBoot": {
+      "port": 8080,
+      "waitTime": 15000,
+      "maxRetries": 20,
+      "healthEndpoint": "/actuator/health"
+    }
+  },
+  "frontend": {
+    "vite": {
+      "port": 5173,
+      "command": "npm run dev"
+    }
+  },
+  "logging": {
+    "enabled": true,
+    "level": "info",
+    "colors": true
+  },
+  "timeouts": {
+    "mysqlStartup": 5000,
+    "springBootStartup": 15000,
+    "connectionTest": 3000
+  },
+  "autoStart": {
+    "mysql": true,
+    "springBoot": true,
+    "frontend": true
+  }
+}

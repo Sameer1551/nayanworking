@@ -1,0 +1,93 @@
+[
+  {
+    "firstName": "Arun",
+    "lastName": "Kumar",
+    "email": "arun.jung@nayan.com",
+    "phone": "9876543210",
+    "companyName": "Nayan Eye Care - Junglighat",
+    "gstNumber": "35AAAAA0000A1Z5",
+    "uniqueSupplierKey": "SUP-JUNG-001",
+    "isActive": true,
+    "createdAt": "2024-04-20T10:00:00Z",
+    "branch": "Junglighat",
+    "branchCode": "JUNG"
+  },
+  {
+    "firstName": "Sita",
+    "lastName": "Sharma",
+    "email": "sita.bath@nayan.com",
+    "phone": "9876543211",
+    "companyName": "Nayan Eye Care - Bathubasti",
+    "gstNumber": "35BBBBB1111B1Z6",
+    "uniqueSupplierKey": "SUP-BATH-002",
+    "isActive": true,
+    "createdAt": "2024-04-20T10:15:00Z",
+    "branch": "Bathubasti",
+    "branchCode": "BATH"
+  },
+  {
+    "firstName": "Rohan",
+    "lastName": "Das",
+    "email": "rohan.digl@nayan.com",
+    "phone": "9876543212",
+    "companyName": "Nayan Eye Care - Diglipur",
+    "gstNumber": "35CCCCC2222C1Z7",
+    "uniqueSupplierKey": "SUP-DIGL-003",
+    "isActive": true,
+    "createdAt": "2024-04-20T10:30:00Z",
+    "branch": "Diglipur",
+    "branchCode": "DIGL"
+  },
+  {
+    "firstName": "Priya",
+    "lastName": "Singh",
+    "email": "priya.maya@nayan.com",
+    "phone": "9876543213",
+    "companyName": "Nayan Eye Care - Mayabunder",
+    "gstNumber": "35DDDDD3333D1Z8",
+    "uniqueSupplierKey": "SUP-MAYA-004",
+    "isActive": true,
+    "createdAt": "2024-04-20T10:45:00Z",
+    "branch": "Mayabunder",
+    "branchCode": "MAYA"
+  },
+  {
+    "firstName": "Vikram",
+    "lastName": "Aditya",
+    "email": "vikram.rang@nayan.com",
+    "phone": "9876543214",
+    "companyName": "Nayan Eye Care - Rangat",
+    "gstNumber": "35EEEEE4444E1Z9",
+    "uniqueSupplierKey": "SUP-RANG-005",
+    "isActive": true,
+    "createdAt": "2024-04-20T11:00:00Z",
+    "branch": "Rangat",
+    "branchCode": "RANG"
+  },
+  {
+    "firstName": "Anjali",
+    "lastName": "Nair",
+    "email": "anjali.have@nayan.com",
+    "phone": "9876543215",
+    "companyName": "Nayan Eye Care - Havelock",
+    "gstNumber": "35FFFFF5555F1Z0",
+    "uniqueSupplierKey": "SUP-HAVE-006",
+    "isActive": true,
+    "createdAt": "2024-04-20T11:15:00Z",
+    "branch": "Havelock",
+    "branchCode": "HAVE"
+  },
+  {
+    "firstName": "Deepak",
+    "lastName": "Verma",
+    "email": "deepak.neil@nayan.com",
+    "phone": "9876543216",
+    "companyName": "Nayan Eye Care - Neil Island",
+    "gstNumber": "35GGGGG6666G1Z1",
+    "uniqueSupplierKey": "SUP-NEIL-007",
+    "isActive": true,
+    "createdAt": "2024-04-20T11:30:00Z",
+    "branch": "Neil Island",
+    "branchCode": "NEIL"
+  }
+]

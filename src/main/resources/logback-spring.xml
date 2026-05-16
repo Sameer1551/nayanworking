@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Console appender for normal spring boot logs -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- PHASE 7: Rolling JSON File Appender for Security Logs -->
+    <appender name="SECURITY_JSON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/security.json</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>logs/security.%d{yyyy-MM-dd}.json</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <includeContext>false</includeContext>
+            <!-- Custom fields can be injected dynamically in code -->
+        </encoder>
+    </appender>
+
+    <!-- Root logger for application (normal console output) -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <!-- Specific logger for security events, sends output to JSON file -->
+    <logger name="SECURITY_AUDIT" level="INFO" additivity="false">
+        <appender-ref ref="SECURITY_JSON" />
+        <appender-ref ref="CONSOLE" /> <!-- Also log to console so we can see it during dev -->
+    </logger>
+
+</configuration>
