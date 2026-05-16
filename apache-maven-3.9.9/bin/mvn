@@ -124,3 +124,45 @@ fi
 # traverses directory structure from process work directory to filesystem root
 # first directory with .mvn subdirectory is considered project base directory
 find_maven_basedir() {
+(
+  basedir=`find_file_argument_basedir "$@"`
+  wdir="${basedir}"
+  while :
+  do
+    if [ -d "$wdir"/.mvn ] ; then
+      basedir=$wdir
+      break
+    fi
+    if [ "$wdir" = '/' ] ; then
+      break
+    fi
+    wdir=`cd "$wdir/.."; pwd`
+  done
+  echo "${basedir}"
+)
+}
+
+find_file_argument_basedir() {
+(
+  basedir=`pwd`
+
+  found_file_switch=0
+  for arg in "$@"; do
+    if [ ${found_file_switch} -eq 1 ]; then
+      if [ -d "${arg}" ]; then
+        basedir=`cd "${arg}" && pwd -P`
+      elif [ -f "${arg}" ]; then
+        basedir=`dirname "${arg}"`
+        basedir=`cd "${basedir}" && pwd -P`
+        if [ ! -d "${basedir}" ]; then
+          echo "Directory ${basedir} extracted from the -f/--file command-line argument ${arg} does not exist" >&2
+          exit 1
+        fi
+      else
+        echo "POM file ${arg} specified with the -f/--file command line argument does not exist" >&2
+        exit 1
+      fi
+      break
+    fi
+    if [ "$arg" = "-f" -o "$arg" = "--file" ]; then
+      found_file_switch=1
