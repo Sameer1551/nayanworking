@@ -1,2 +1,4 @@
 {
   "mcpServers": {
+    "supabase": {
+      "type": "http",
