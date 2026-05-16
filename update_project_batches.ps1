@@ -2,7 +2,7 @@
 # ADVANCED GITHUB CONTRIBUTION GENERATOR
 # =========================================================
 
-$remoteUrl = "https://github.com/Sameer1551/nayanworking.git"
+$remoteUrl = "https://github.com/Sameer1551/Nayanworking.git"
 
 $sourceDir = Join-Path $PSScriptRoot ".update_source"
 $memoryFile = Join-Path $PSScriptRoot ".upload_memory.json"
