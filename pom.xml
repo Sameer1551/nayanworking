@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<!-- Override byte-buddy to support Java 26 -->
-		<byte-buddy.version>1.15.11</byte-buddy.version>
+		<byte-buddy.version>1.18.8</byte-buddy.version>
 		<mockito.version>5.15.2</mockito.version>
 	</properties>
 	<dependencies>
