@@ -39,3 +39,44 @@ if not "%MAVEN_SKIP_RC%"=="" goto skipRcPre
 if exist "%USERPROFILE%\mavenrc_pre.bat" call "%USERPROFILE%\mavenrc_pre.bat" %*
 if exist "%USERPROFILE%\mavenrc_pre.cmd" call "%USERPROFILE%\mavenrc_pre.cmd" %*
 :skipRcPre
+
+@setlocal
+
+set ERROR_CODE=0
+
+@REM ==== START VALIDATION ====
+if not "%JAVA_HOME%"=="" goto OkJHome
+for %%i in (java.exe) do set "JAVACMD=%%~$PATH:i"
+goto checkJCmd
+
+:OkJHome
+set "JAVACMD=%JAVA_HOME%\bin\java.exe"
+
+:checkJCmd
+if exist "%JAVACMD%" goto chkMHome
+
+echo The JAVA_HOME environment variable is not defined correctly, >&2
+echo this environment variable is needed to run this program. >&2
+goto error
+
+:chkMHome
+set "MAVEN_HOME=%~dp0"
+set "MAVEN_HOME=%MAVEN_HOME:~0,-5%"
+if not "%MAVEN_HOME%"=="" goto checkMCmd
+goto error
+
+:checkMCmd
+if exist "%MAVEN_HOME%\bin\mvn.cmd" goto init
+goto error
+@REM ==== END VALIDATION ====
+
+:init
+
+set MAVEN_CMD_LINE_ARGS=%*
+
+@REM Find the project basedir, i.e., the directory that contains the directory ".mvn".
+@REM Fallback to current working directory if not found.
+
+set "MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%"
+if not "%MAVEN_PROJECTBASEDIR%"=="" goto endDetectBaseDir
+
