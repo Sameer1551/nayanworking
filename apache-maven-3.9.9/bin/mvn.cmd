@@ -121,3 +121,44 @@ if exist "%FILE_ARG%\*" (
 )
 if not exist "%POM_DIR%" (
   echo Directory "%POM_DIR%" extracted from the -f/--file command-line argument "%FILE_ARG%" does not exist >&2
+  goto error
+)
+set "WDIR=%POM_DIR%"
+goto findBaseDir
+
+:get_directory_from_file
+set "POM_DIR=%~dp1"
+:stripPomDir
+if not "_%POM_DIR:~-1%"=="_\" goto pomDirStripped
+set "POM_DIR=%POM_DIR:~0,-1%"
+goto stripPomDir
+:pomDirStripped
+exit /b
+
+:findBaseDir
+cd /d "%WDIR%"
+set "WDIR=%CD%"
+:findBaseDirLoop
+if exist ".mvn" goto baseDirFound
+cd ..
+IF "%WDIR%"=="%CD%" goto baseDirNotFound
+set "WDIR=%CD%"
+goto findBaseDirLoop
+
+:baseDirFound
+set "MAVEN_PROJECTBASEDIR=%WDIR%"
+cd /d "%EXEC_DIR%"
+goto endDetectBaseDir
+
+:baseDirNotFound
+if "_%EXEC_DIR:~-1%"=="_\" set "EXEC_DIR=%EXEC_DIR:~0,-1%"
+set "MAVEN_PROJECTBASEDIR=%EXEC_DIR%"
+cd /d "%EXEC_DIR%"
+
+:endDetectBaseDir
+
+set "jvmConfig=\.mvn\jvm.config"
+if not exist "%MAVEN_PROJECTBASEDIR%%jvmConfig%" goto endReadAdditionalConfig
+
+@setlocal EnableExtensions EnableDelayedExpansion
+for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
