@@ -20,3 +20,14 @@ if not exist "%BACKUP_DIR%" mkdir "%BACKUP_DIR%"
 :: Generate timestamp
 for /f "tokens=2-4 delims=/ " %%a in ('date /t') do (set mydate=%%c-%%a-%%b)
 for /f "tokens=1-2 delims=/:" %%a in ('time /t') do (set mytime=%%a%%b)
+set TIMESTAMP=%mydate%_%mytime: =0%
+
+:: Backup filename
+set BACKUP_FILE=%BACKUP_DIR%\%DB_NAME%_backup_%TIMESTAMP%.sql
+set ENCRYPTED_FILE=%BACKUP_DIR%\%DB_NAME%_backup_%TIMESTAMP%.sql.enc
+
+echo Starting database backup...
+%MYSQLDUMP_PATH% -u %DB_USER% -p%DB_PASS% %DB_NAME% > "%BACKUP_FILE%"
+
+if %ERRORLEVEL% equ 0 (
+    echo Backup completed successfully: %BACKUP_FILE%
