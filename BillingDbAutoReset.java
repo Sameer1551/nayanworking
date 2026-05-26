@@ -10,3 +10,7 @@ public class BillingDbAutoReset {
           if (rs.next()) {
             System.out.println("billing_records AUTO_INCREMENT now=" + rs.getLong(1));
           }
+        }
+      }
+    }
+  }
