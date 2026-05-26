@@ -10,3 +10,9 @@ public class BillingDbCheck {
             System.out.println(table + " rows=" + rs.getInt(1));
           }
         }
+        try (ResultSet rs = st.executeQuery("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA='nayan-db' AND TABLE_NAME='billing_records'")) {
+          if (rs.next()) {
+            System.out.println("billing_records AUTO_INCREMENT=" + rs.getLong(1));
+          }
+        }
+        try (ResultSet rs = st.executeQuery("SELECT id, bill_number, branch_code FROM billing_records ORDER BY id")) {
