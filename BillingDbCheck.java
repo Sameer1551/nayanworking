@@ -16,3 +16,9 @@ public class BillingDbCheck {
           }
         }
         try (ResultSet rs = st.executeQuery("SELECT id, bill_number, branch_code FROM billing_records ORDER BY id")) {
+          while (rs.next()) {
+            System.out.println("record id=" + rs.getLong(1) + ", bill=" + rs.getString(2) + ", branch=" + rs.getString(3));
+          }
+        }
+      }
+    }
