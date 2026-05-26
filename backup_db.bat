@@ -31,3 +31,14 @@ echo Starting database backup...
 
 if %ERRORLEVEL% equ 0 (
     echo Backup completed successfully: %BACKUP_FILE%
+    
+    :: PHASE 8: Encrypt the backup using OpenSSL
+    echo Encrypting backup file...
+    openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -salt -in "%BACKUP_FILE%" -out "%ENCRYPTED_FILE%" -pass pass:%BACKUP_ENCRYPTION_PASS%
+    
+    if exist "%ENCRYPTED_FILE%" (
+        echo Encryption successful: %ENCRYPTED_FILE%
+        :: Delete the plaintext SQL file securely
+        del "%BACKUP_FILE%"
+    ) else (
+        echo Encryption failed. Retaining plaintext backup.
