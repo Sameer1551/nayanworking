@@ -12,3 +12,10 @@ public class BillingDbReset {
         st.execute("SET FOREIGN_KEY_CHECKS=1");
       }
       try (Statement st = conn.createStatement()) {
+        try (ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM billing_records")) {
+          rs.next();
+          System.out.println("billing_records rows after reset=" + rs.getInt(1));
+        }
+        try (ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM billing_products")) {
+          rs.next();
+          System.out.println("billing_products rows after reset=" + rs.getInt(1));
