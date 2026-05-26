@@ -19,3 +19,24 @@ This product includes software developed by
 The Apache Software Foundation (http://www.apache.org/).
 This product includes software developed by
 ThoughtWorks (http://www.thoughtworks.com).
+This product includes software developed by
+javolution (http://javolution.org/).
+This product includes software developed by
+Rome (https://rome.dev.java.net/).
+
+about.html in archive lib/org.eclipse.sisu.inject-0.3.5.jar
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>About org.eclipse.sisu.inject</title>
+</head>
+<body lang="EN-US">
+<h2>About org.eclipse.sisu.inject</h2>
+ 
+<p>November 5, 2013</p>	
+<h3>License</h3>
+
+<p>The Eclipse Foundation makes available all content in this plug-in (&quot;Content&quot;).  Unless otherwise 
